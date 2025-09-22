@@ -6,6 +6,7 @@ A lightweight, powerful Python tool to audit SEO health across all WordPress pag
 This script automatically:
 
 - Crawls all published posts and pages using the WordPress REST API (/wp-json/wp/v2/posts, /wp-json/wp/v2/pages)
+  
 - Analyzes key on-page SEO elements:
   - Presence and count of H1 tags
   - Page title length (ideal: 50–60 characters)
@@ -15,14 +16,15 @@ This script automatically:
   - Open Graph (og:) and Twitter Card metadata
   - Breadcrumb schema (JSON-LD structured data)
   - Multiple H1s, missing titles, and other common issues
+    
 - Generates a detailed HTML report with:
   - Color-coded results (green = OK, yellow = warning, red = critical)
   - Expandable issue details per page
   - Image previews for missing alt text
   - Search functionality to filter results
   - Exports data to CSV for further analysis in spreadsheets or BI tools
-  - 
-Ideal for routine audits, post-migration checks, or quality assurance before publishing.
+
+
 
 ### SEO Best Practices Implemented
 The analyzer follows industry-standard guidelines for optimal search engine visibility:
