@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SEO Audit Report: https://plovdivwalks.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Roboto', sans-serif; }
+        .hover-expand { cursor: pointer; }
+        .issue-list { padding-left: 20px; margin: 8px 0; font-size: 0.95em; }
+        .img-preview { max-width: 120px; max-height: 80px; object-fit: cover; border-radius: 4px; }
+        .hidden { display: none; }
+        .search-box input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+        .tip { font-size: 0.9em; color: #6b7280; margin-top: 4px; }
+        .code { background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-family: monospace; }
+    </style>
+    <script>
+        function toggleRow(id) { document.getElementById('details-'+id).classList.toggle('hidden'); }
+        function filterTable() {
+            const q = document.getElementById('search').value.toLowerCase();
+            document.querySelectorAll('[data-search]').forEach(r => {
+                r.style.display = r.getAttribute('data-search').toLowerCase().includes(q) ? '' : 'none';
+            });
+        }
+        function generateMetaSuggestion(topic) {
+            const input = prompt("Enter topic or keyword for this page:");
+            if (input) {
+                const suggestion = `Discover everything about $<built-in function input> — expert insights and practical tips.`;
+                alert("Suggested meta description:\n\n" + suggestion);
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="max-w-6xl mx-auto p-6">
+
+        <!-- Header -->
+        <h1 class="text-3xl font-bold text-center mb-2">SEO Audit Report</h1>
+        <p class="text-center text-gray-600 mb-6">Generated on 2025-09-22 10:14 | Site: <strong>https://plovdivwalks.com</strong></p>
+
+        <!-- Search -->
+        <div class="search-box mb-4">
+            <input type="text" id="search" placeholder="🔍 Filter by URL, issue, image..." onkeyup="filterTable()">
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-6 text-center">
+            <div class="bg-white p-4 rounded shadow">
+                <strong class="text-xl">8</strong><br>
+                <span class="text-sm text-gray-600">Pages Scanned</span>
+            </div>
+            <div class="bg-green-100 p-4 rounded shadow">
+                <strong class="text-xl">0</strong><br>
+                <span class="text-sm text-gray-600">Fully OK</span>
+            </div>
+            <div class="bg-yellow-100 p-4 rounded shadow">
+                <strong class="text-xl">8</strong><br>
+                <span class="text-sm text-gray-600">With Issues</span>
+            </div>
+            <div class="bg-red-100 p-4 rounded shadow">
+                <strong class="text-xl">0</strong><br>
+                <span class="text-sm text-gray-600">Critical Issues</span>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <table class="w-full border-collapse shadow-md bg-white">
+            <thead class="bg-gray-100 text-left uppercase text-sm font-semibold">
+                <tr>
+                    <th class="py-3 px-4">Status</th>
+                    <th class="py-3 px-4">Page Title</th>
+                    <th class="py-3 px-4">Type</th>
+                    <th class="py-3 px-4">Issues</th>
+                </tr>
+            </thead>
+            <tbody>
+
+        <tr class="hover-expand" data-search="https://plovdivwalks.com/traditional-bulgarian-breakfasts-we-make-at-home/ Title too long (78 chars): A Taste of Bulgarian Breakfast: Banitsa, Mekitsa, and the Flavors of Plovdiv - | Meta description too long (311 chars) | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/09/DSC_4789.jpg | Image missing alt: https://secure.gravatar.com/avatar/992d5651bbed8a6ceba50abccdc7cdee88855fd163a00eb2bf12c3a79a8fe845?s=50&d=mm&r=g | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg" onclick="toggleRow('0')">
+            <td class="py-3 px-4" style="background-color: #fff8e1">
+                <strong>
+                    🟡 Warning
+                </strong>
+            </td>
+            <td class="py-3 px-4 font-medium">A Taste of Bulgarian Breakfast...</td>
+            <td class="py-3 px-4 text-sm text-gray-600">POST</td>
+            <td class="py-3 px-4 text-sm">Title too long; Meta desc too long; 4 images missing alt</td>
+        </tr>
+        <tr id="details-0" class="hidden border-t">
+            <td colspan="4" class="p-4 bg-gray-50">
+                <div class="space-y-3">
+                    <p><strong>URL:</strong> <a href="https://plovdivwalks.com/traditional-bulgarian-breakfasts-we-make-at-home/" target="_blank" class="text-blue-600 hover:underline">https://plovdivwalks.com/traditional-bulgarian-breakfasts-we-make-at-home/</a></p>
+                    <p><strong>Full Issues:</strong></p>
+                    <ul class="issue-list">
+        <li>• Title too long (78 chars): A Taste of Bulgarian Breakfast: Banitsa, Mekitsa, and the Flavors of Plovdiv -</li><li>• Meta description too long (311 chars)</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/09/DSC_4789.jpg</li><li>• Image missing alt: https://secure.gravatar.com/avatar/992d5651bbed8a6ceba50abccdc7cdee88855fd163a00eb2bf12c3a79a8fe845?s=50&d=mm&r=g</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg</li>
+                <p><strong>Images Missing Alt Text:</strong></p>
+                <div class="flex flex-wrap gap-3 mt-2">
+            
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/09/DSC_4789.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/09/DSC_4789.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://secure.gravatar.com/avatar/992d5651bbed8a6ceba50abccdc7cdee88855fd163a00eb2bf12c3a79a8fe845?s=50&d=mm&r=g" alt="Missing alt" class="img-preview border">
+                        <a href="https://secure.gravatar.com/avatar/992d5651bbed8a6ceba50abccdc7cdee88855fd163a00eb2bf12c3a79a8fe845?s=50&d=mm&r=g" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        
+        <tr class="hover-expand" data-search="https://plovdivwalks.com/bulgarian-wine-a-rich-heritage-and-unique-flavors/ Meta description too long (368 chars) | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-1024x633.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg" onclick="toggleRow('1')">
+            <td class="py-3 px-4" style="background-color: #fff8e1">
+                <strong>
+                    🟡 Warning
+                </strong>
+            </td>
+            <td class="py-3 px-4 font-medium">Bulgarian Wine: A Rich Heritag...</td>
+            <td class="py-3 px-4 text-sm text-gray-600">POST</td>
+            <td class="py-3 px-4 text-sm">Meta desc too long; 3 images missing alt</td>
+        </tr>
+        <tr id="details-1" class="hidden border-t">
+            <td colspan="4" class="p-4 bg-gray-50">
+                <div class="space-y-3">
+                    <p><strong>URL:</strong> <a href="https://plovdivwalks.com/bulgarian-wine-a-rich-heritage-and-unique-flavors/" target="_blank" class="text-blue-600 hover:underline">https://plovdivwalks.com/bulgarian-wine-a-rich-heritage-and-unique-flavors/</a></p>
+                    <p><strong>Full Issues:</strong></p>
+                    <ul class="issue-list">
+        <li>• Meta description too long (368 chars)</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-1024x633.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg</li>
+                <p><strong>Images Missing Alt Text:</strong></p>
+                <div class="flex flex-wrap gap-3 mt-2">
+            
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-1024x633.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-1024x633.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        
+        <tr class="hover-expand" data-search="https://plovdivwalks.com/hello-world/ Meta description too long (348 chars) | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg" onclick="toggleRow('2')">
+            <td class="py-3 px-4" style="background-color: #fff8e1">
+                <strong>
+                    🟡 Warning
+                </strong>
+            </td>
+            <td class="py-3 px-4 font-medium">3 Resons why you should visit ...</td>
+            <td class="py-3 px-4 text-sm text-gray-600">POST</td>
+            <td class="py-3 px-4 text-sm">Meta desc too long; 3 images missing alt</td>
+        </tr>
+        <tr id="details-2" class="hidden border-t">
+            <td colspan="4" class="p-4 bg-gray-50">
+                <div class="space-y-3">
+                    <p><strong>URL:</strong> <a href="https://plovdivwalks.com/hello-world/" target="_blank" class="text-blue-600 hover:underline">https://plovdivwalks.com/hello-world/</a></p>
+                    <p><strong>Full Issues:</strong></p>
+                    <ul class="issue-list">
+        <li>• Meta description too long (348 chars)</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg</li>
+                <p><strong>Images Missing Alt Text:</strong></p>
+                <div class="flex flex-wrap gap-3 mt-2">
+            
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        
+        <tr class="hover-expand" data-search="https://plovdivwalks.com/booking/ Title too short (14 chars): Booking Form - | Meta description too long (293 chars) | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/yoghourt-1024x681.jpg" onclick="toggleRow('3')">
+            <td class="py-3 px-4" style="background-color: #fff8e1">
+                <strong>
+                    🟡 Warning
+                </strong>
+            </td>
+            <td class="py-3 px-4 font-medium">Booking Form</td>
+            <td class="py-3 px-4 text-sm text-gray-600">PAGE</td>
+            <td class="py-3 px-4 text-sm">Title too short; Meta desc too long; 1 images missing alt</td>
+        </tr>
+        <tr id="details-3" class="hidden border-t">
+            <td colspan="4" class="p-4 bg-gray-50">
+                <div class="space-y-3">
+                    <p><strong>URL:</strong> <a href="https://plovdivwalks.com/booking/" target="_blank" class="text-blue-600 hover:underline">https://plovdivwalks.com/booking/</a></p>
+                    <p><strong>Full Issues:</strong></p>
+                    <ul class="issue-list">
+        <li>• Title too short (14 chars): Booking Form -</li><li>• Meta description too long (293 chars)</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/yoghourt-1024x681.jpg</li>
+                <p><strong>Images Missing Alt Text:</strong></p>
+                <div class="flex flex-wrap gap-3 mt-2">
+            
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/yoghourt-1024x681.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/yoghourt-1024x681.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        
+        <tr class="hover-expand" data-search="https://plovdivwalks.com/tours/ Title too short (7 chars): Tours - | No H1 tag found | Meta description too long (375 chars) | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/yoghourt-1024x681.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/home_slider-1024x681.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bread-1024x681.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-1024x633.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/monument-1024x681.jpg | ... and 1 more" onclick="toggleRow('4')">
+            <td class="py-3 px-4" style="background-color: #fff8e1">
+                <strong>
+                    🟡 Warning
+                </strong>
+            </td>
+            <td class="py-3 px-4 font-medium">Tours</td>
+            <td class="py-3 px-4 text-sm text-gray-600">PAGE</td>
+            <td class="py-3 px-4 text-sm">Title too short; Missing H1; Meta desc too long; 6 images missing alt</td>
+        </tr>
+        <tr id="details-4" class="hidden border-t">
+            <td colspan="4" class="p-4 bg-gray-50">
+                <div class="space-y-3">
+                    <p><strong>URL:</strong> <a href="https://plovdivwalks.com/tours/" target="_blank" class="text-blue-600 hover:underline">https://plovdivwalks.com/tours/</a></p>
+                    <p><strong>Full Issues:</strong></p>
+                    <ul class="issue-list">
+        <li>• Title too short (7 chars): Tours -</li><li>• No H1 tag found</li><li>• Meta description too long (375 chars)</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/yoghourt-1024x681.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/home_slider-1024x681.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bread-1024x681.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-1024x633.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/monument-1024x681.jpg</li><li>• ... and 1 more</li>
+                <p><strong>Images Missing Alt Text:</strong></p>
+                <div class="flex flex-wrap gap-3 mt-2">
+            
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/yoghourt-1024x681.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/yoghourt-1024x681.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/home_slider-1024x681.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/home_slider-1024x681.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/bread-1024x681.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/bread-1024x681.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-1024x633.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-1024x633.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/monument-1024x681.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/monument-1024x681.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/intro_1.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/intro_1.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        
+        <tr class="hover-expand" data-search="https://plovdivwalks.com/ Meta description too long (270 chars) | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/yoghourt-1024x681.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/logo-placeholder-dark-1400x241-1.png" onclick="toggleRow('5')">
+            <td class="py-3 px-4" style="background-color: #fff8e1">
+                <strong>
+                    🟡 Warning
+                </strong>
+            </td>
+            <td class="py-3 px-4 font-medium">Home</td>
+            <td class="py-3 px-4 text-sm text-gray-600">PAGE</td>
+            <td class="py-3 px-4 text-sm">Meta desc too long; 2 images missing alt</td>
+        </tr>
+        <tr id="details-5" class="hidden border-t">
+            <td colspan="4" class="p-4 bg-gray-50">
+                <div class="space-y-3">
+                    <p><strong>URL:</strong> <a href="https://plovdivwalks.com/" target="_blank" class="text-blue-600 hover:underline">https://plovdivwalks.com/</a></p>
+                    <p><strong>Full Issues:</strong></p>
+                    <ul class="issue-list">
+        <li>• Meta description too long (270 chars)</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/yoghourt-1024x681.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/logo-placeholder-dark-1400x241-1.png</li>
+                <p><strong>Images Missing Alt Text:</strong></p>
+                <div class="flex flex-wrap gap-3 mt-2">
+            
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/yoghourt-1024x681.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/yoghourt-1024x681.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/logo-placeholder-dark-1400x241-1.png" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/logo-placeholder-dark-1400x241-1.png" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        
+        <tr class="hover-expand" data-search="https://plovdivwalks.com/blog/ Title too short (6 chars): Blog - | No H1 tag found | Meta description too short (39 chars) | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-1024x633.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg | Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg" onclick="toggleRow('6')">
+            <td class="py-3 px-4" style="background-color: #fff8e1">
+                <strong>
+                    🟡 Warning
+                </strong>
+            </td>
+            <td class="py-3 px-4 font-medium">Blog</td>
+            <td class="py-3 px-4 text-sm text-gray-600">PAGE</td>
+            <td class="py-3 px-4 text-sm">Title too short; Missing H1; Meta desc too short; 4 images missing alt</td>
+        </tr>
+        <tr id="details-6" class="hidden border-t">
+            <td colspan="4" class="p-4 bg-gray-50">
+                <div class="space-y-3">
+                    <p><strong>URL:</strong> <a href="https://plovdivwalks.com/blog/" target="_blank" class="text-blue-600 hover:underline">https://plovdivwalks.com/blog/</a></p>
+                    <p><strong>Full Issues:</strong></p>
+                    <ul class="issue-list">
+        <li>• Title too short (6 chars): Blog -</li><li>• No H1 tag found</li><li>• Meta description too short (39 chars)</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-1024x633.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg</li><li>• Image missing alt: https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg</li>
+                <p><strong>Images Missing Alt Text:</strong></p>
+                <div class="flex flex-wrap gap-3 mt-2">
+            
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-1024x633.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-1024x633.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/bingPLV-300x177.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                
+                    <div class="text-center">
+                        <img src="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg" alt="Missing alt" class="img-preview border">
+                        <a href="https://plovdivwalks.com/wp-content/uploads/2024/05/cta-300x186.jpg" target="_blank" class="text-xs text-gray-500 hover:text-blue-600">View</a>
+                    </div>
+                </div>
+                </div>
+            </td>
+        </tr>
+        
+        <tr class="hover-expand" data-search="https://plovdivwalks.com/privacy-policy/ Title too short (16 chars): Privacy Policy - | No H1 tag found | Meta description too long (346 chars)" onclick="toggleRow('7')">
+            <td class="py-3 px-4" style="background-color: #fff8e1">
+                <strong>
+                    🟡 Warning
+                </strong>
+            </td>
+            <td class="py-3 px-4 font-medium">Privacy Policy</td>
+            <td class="py-3 px-4 text-sm text-gray-600">PAGE</td>
+            <td class="py-3 px-4 text-sm">Title too short; Missing H1; Meta desc too long</td>
+        </tr>
+        <tr id="details-7" class="hidden border-t">
+            <td colspan="4" class="p-4 bg-gray-50">
+                <div class="space-y-3">
+                    <p><strong>URL:</strong> <a href="https://plovdivwalks.com/privacy-policy/" target="_blank" class="text-blue-600 hover:underline">https://plovdivwalks.com/privacy-policy/</a></p>
+                    <p><strong>Full Issues:</strong></p>
+                    <ul class="issue-list">
+        <li>• Title too short (16 chars): Privacy Policy -</li><li>• No H1 tag found</li><li>• Meta description too long (346 chars)</li>
+                </div>
+            </td>
+        </tr>
+        
+            </tbody>
+        </table>
+
+        <!-- What's Working Well -->
+        <div class="mt-12 p-6 bg-green-50 border-l-4 border-green-400">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">✅ What’s Working Well</h2>
+            <p class="text-gray-700 mb-4">These best practices are being followed across your site:</p>
+            <ul class="space-y-2 text-gray-700">
+    <li>🟢 8/8 pages include an H1 tag</li><li>🟢 3/8 pages have title tags within optimal length (50–60 characters)</li><li>⚠️ No pages have proper meta descriptions — they're missing or incorrectly sized</li><li>🟢 8/8 pages include Open Graph tags for social sharing</li><li>🟢 8/8 pages support Twitter Cards</li><li>🟢 8/8 pages include breadcrumb schema (JSON-LD)</li>
+            </ul>
+            <p class="text-gray-600 text-sm mt-4"><strong>Note:</strong> A “good” element means it exists AND meets best practice standards.</p>
+        </div>
+
+        <!-- Quick Wins -->
+        <div class="mt-8 p-6 bg-blue-50 border-l-4 border-blue-400">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">⚡ Quick Wins (<2 min each)</h2>
+            <ul class="space-y-2 text-gray-700">
+                <li>✅ Add missing meta descriptions using your SEO plugin</li>
+                <li>✅ Set <span class="code">alt=""</span> on decorative images</li>
+                <li>✅ Enable Twitter Card via your SEO plugin settings</li>
+                <li><button onclick="generateMetaSuggestion()" class="text-blue-600 underline">💡 Generate Meta Description Suggestion</button></li>
+            </ul>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="mt-8 p-6 bg-indigo-50 border-l-4 border-indigo-400">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">📋 Your Next Steps</h2>
+            <ol class="space-y-2 text-gray-700">
+                <li>1. Install Rank Math or Yoast SEO (if not already)</li>
+                <li>2. Fix missing H1 on critical pages</li>
+                <li>3. Write meta descriptions for top 5 traffic pages</li>
+                <li>4. Add Open Graph image to homepage</li>
+                <li>5. Re-run this audit in 1 week</li>
+            </ol>
+            <p class="text-sm text-gray-500 mt-4">Tip: Share this list with your developer or writer!</p>
+        </div>
+
+        <p class="text-center mt-8 text-sm text-gray-500">
+            Custom SEO Analyzer for WordPress by Victoria with the help of Qwen
+        </p>
+    </div>
+</body>
+</html>
