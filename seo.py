@@ -1,4 +1,4 @@
-# seo_analyzer.py
+# seo.py
 import requests
 from bs4 import BeautifulSoup
 import csv
@@ -41,6 +41,7 @@ def get_all_wordpress_urls(base_url):
                 params = {'per_page': PER_PAGE, 'page': page, 'status': 'publish'}
                 response = requests.get(endpoint, params=params, headers=HEADERS, timeout=TIMEOUT)
 
+                # Stop if 400/404 and not first page
                 if response.status_code in [400, 404] and page > 1:
                     print(f"  → Pagination ended (status {response.status_code})")
                     break
@@ -81,22 +82,10 @@ def get_all_wordpress_urls(base_url):
     return urls
 
 
-def detect_seo_plugin(html):
-    """Detect which SEO plugin is in use"""
-    if 'yoast' in html.lower():
-        return 'Yoast SEO'
-    elif 'rank-math' in html.lower() or 'data-rank-math' in html.lower():
-        return 'Rank Math'
-    elif 'aioseo' in html.lower():
-        return 'All in One SEO'
-    return None
-
-
 def analyze_html(html, url):
     """Analyze SEO elements in the HTML"""
     soup = BeautifulSoup(html, 'html.parser')
     base_domain = '/'.join(url.split('/')[:3])
-    seo_plugin = detect_seo_plugin(html)
 
     report = {
         'title_tag': '',
@@ -111,8 +100,7 @@ def analyze_html(html, url):
         'has_breadcrumb_schema': False,
         'has_breadcrumb_html': False,
         'issues': [],
-        'issues_detail': [],
-        'seo_plugin': seo_plugin
+        'issues_detail': []
     }
 
     # === Page Title ===
@@ -188,7 +176,7 @@ def analyze_html(html, url):
         # Skip placeholders and spacers
         if not src:
             continue
-        if 'data:image/gif;base64' in src or 'spacer' in src.lower():
+        if 'image/gif;base64' in src or 'spacer' in src.lower():
             continue
 
         if not alt:
@@ -228,7 +216,7 @@ def analyze_html(html, url):
 
 
 def generate_html_report(results, base_url):
-    """Generate a beautiful, self-contained HTML SEO report with smart tips"""
+    """Generate a beautiful, self-contained HTML SEO report with only meaningful content"""
     total_pages = len(results)
     clean_pages = len([r for r in results if r['Issues Summary'] == 'OK'])
     has_h1_ok = len([r for r in results if 'Missing H1' not in r['Issues Detail']])
@@ -248,10 +236,6 @@ def generate_html_report(results, base_url):
     twitter_good = len([r for r in results if 'Missing Twitter Card' not in r['Issues Detail']])
     schema_good = len([r for r in results if 'Missing breadcrumb schema' not in r['Issues Detail']])
 
-    # Detect most used SEO plugin
-    plugins = [r['SEO Plugin'] for r in results if r['SEO Plugin']]
-    primary_plugin = max(set(plugins), key=plugins.count) if plugins else None
-
     # Sort by severity
     def severity(r):
         if 'noindex' in r['Issues Detail'].lower() or 'Missing H1' in r['Issues Detail']:
@@ -269,7 +253,7 @@ def generate_html_report(results, base_url):
             return "#f0f9f0"
         return "#fff8e1"
 
-    # Start HTML
+    # Start building HTML
     html = f"""
 <!DOCTYPE html>
 <html lang="en">
@@ -286,8 +270,6 @@ def generate_html_report(results, base_url):
         .img-preview {{ max-width: 120px; max-height: 80px; object-fit: cover; border-radius: 4px; }}
         .hidden {{ display: none; }}
         .search-box input {{ width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }}
-        .tip {{ font-size: 0.9em; color: #6b7280; margin-top: 4px; }}
-        .code {{ background: #f3f4f6; padding: 2px 6px; border-radius: 4px; font-family: monospace; }}
     </style>
     <script>
         function toggleRow(id) {{ document.getElementById('details-'+id).classList.toggle('hidden'); }}
@@ -296,13 +278,6 @@ def generate_html_report(results, base_url):
             document.querySelectorAll('[data-search]').forEach(r => {{
                 r.style.display = r.getAttribute('data-search').toLowerCase().includes(q) ? '' : 'none';
             }});
-        }}
-        function generateMetaSuggestion(topic) {{
-            const input = prompt("Enter topic or keyword for this page:");
-            if (input) {{
-                const suggestion = `Discover everything about ${input} — expert insights and practical tips.`;
-                alert("Suggested meta description:\\n\\n" + suggestion);
-            }}
         }}
     </script>
 </head>
@@ -351,7 +326,7 @@ def generate_html_report(results, base_url):
             <tbody>
 """
 
-    # Add rows
+    # Add table rows
     for idx, r in enumerate(results):
         bg = get_color(r)
         short_title = r['Title'][:30] + "..." if len(r['Title']) > 30 else r['Title']
@@ -404,74 +379,59 @@ def generate_html_report(results, base_url):
             </tbody>
         </table>
 
-        <!-- What's Working Well -->
+        <!-- What’s Working Well -->
         <div class="mt-12 p-6 bg-green-50 border-l-4 border-green-400">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">✅ What’s Working Well</h2>
-            <p class="text-gray-700 mb-4">These best practices are being followed across your site:</p>
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">What’s Working Well</h2>
+            <p class="text-gray-700 mb-4">The following SEO best practices are correctly implemented across your site:</p>
             <ul class="space-y-2 text-gray-700">
     """
 
-    if has_h1_ok > 0:
+    any_strength = False
+
+    if has_h1_ok == total_pages:
+        html += f"<li>🟢 All {total_pages} pages include an H1 tag</li>"
+        any_strength = True
+    elif has_h1_ok > 0:
         html += f"<li>🟢 {has_h1_ok}/{total_pages} pages include an H1 tag</li>"
-    else:
-        html += "<li>🔴 All pages should have one H1 — it helps search engines understand your content</li>"
+        any_strength = True
 
-    if title_good > 0:
-        html += f"<li>🟢 {title_good}/{total_pages} pages have title tags within optimal length (50–60 characters)</li>"
-    else:
-        html += "<li>🟡 Consider optimizing titles — Google typically displays ~60 characters</li>"
+    if title_good == total_pages:
+        html += f"<li>🟢 All {total_pages} pages have well-sized titles (50–60 characters)</li>"
+        any_strength = True
+    elif title_good > 0:
+        html += f"<li>🟢 {title_good}/{total_pages} pages have well-sized titles</li>"
+        any_strength = True
 
-    if meta_good > 0:
-        html += f"<li>🟢 {meta_good}/{total_pages} pages have complete and well-sized meta descriptions (50–160 chars)</li>"
-    else:
-        html += "<li>⚠️ No pages have proper meta descriptions — they're missing or incorrectly sized</li>"
+    if og_good == total_pages:
+        html += f"<li>🟢 All {total_pages} pages include Open Graph tags</li>"
+        any_strength = True
+    elif og_good > 0:
+        html += f"<li>🟢 {og_good}/{total_pages} pages include Open Graph tags</li>"
+        any_strength = True
 
-    if og_good > 0:
-        html += f"<li>🟢 {og_good}/{total_pages} pages include Open Graph tags for social sharing</li>"
-    else:
-        html += "<li>💡 Add OG tags so links look great when shared on Facebook, LinkedIn, etc.</li>"
-
-    if twitter_good > 0:
+    if twitter_good == total_pages:
+        html += f"<li>🟢 All {total_pages} pages support Twitter Cards</li>"
+        any_strength = True
+    elif twitter_good > 0:
         html += f"<li>🟢 {twitter_good}/{total_pages} pages support Twitter Cards</li>"
-    else:
-        html += "<li>❌ None of your pages support Twitter Cards — missed engagement opportunity</li>"
+        any_strength = True
 
-    if schema_good > 0:
+    if schema_good == total_pages:
+        html += f"<li>🟢 All {total_pages} pages include breadcrumb schema (JSON-LD)</li>"
+        any_strength = True
+    elif schema_good > 0:
         html += f"<li>🟢 {schema_good}/{total_pages} pages include breadcrumb schema (JSON-LD)</li>"
-    else:
-        html += "<li>🚫 Breadcrumb schema missing site-wide — hurts rich snippets and navigation clarity</li>"
+        any_strength = True
+
+    if not any_strength:
+        html += "<li>No major SEO strengths detected yet — but every fix brings you closer.</li>"
 
     html += """
             </ul>
-            <p class="text-gray-600 text-sm mt-4"><strong>Note:</strong> A “good” element means it exists AND meets best practice standards.</p>
-        </div>
-
-        <!-- Quick Wins -->
-        <div class="mt-8 p-6 bg-blue-50 border-l-4 border-blue-400">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">⚡ Quick Wins (<2 min each)</h2>
-            <ul class="space-y-2 text-gray-700">
-                <li>✅ Add missing meta descriptions using your SEO plugin</li>
-                <li>✅ Set <span class="code">alt=""</span> on decorative images</li>
-                <li>✅ Enable Twitter Card via your SEO plugin settings</li>
-                <li><button onclick="generateMetaSuggestion()" class="text-blue-600 underline">💡 Generate Meta Description Suggestion</button></li>
-            </ul>
-        </div>
-
-        <!-- Next Steps -->
-        <div class="mt-8 p-6 bg-indigo-50 border-l-4 border-indigo-400">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">📋 Your Next Steps</h2>
-            <ol class="space-y-2 text-gray-700">
-                <li>1. Install Rank Math or Yoast SEO (if not already)</li>
-                <li>2. Fix missing H1 on critical pages</li>
-                <li>3. Write meta descriptions for top 5 traffic pages</li>
-                <li>4. Add Open Graph image to homepage</li>
-                <li>5. Re-run this audit in 1 week</li>
-            </ol>
-            <p class="text-sm text-gray-500 mt-4">Tip: Share this list with your developer or writer!</p>
         </div>
 
         <p class="text-center mt-8 text-sm text-gray-500">
-            Custom SEO Analyzer for WordPress by Victoria with the help of Qwen
+            Custom SEO Analyzer for WordPress by Victoria and Qwen
         </p>
     </div>
 </body>
@@ -520,8 +480,7 @@ def main():
                 'has_breadcrumb_schema': False,
                 'has_breadcrumb_html': False,
                 'issues': [f"Failed to load: {str(e)}"],
-                'issues_detail': [f"Failed to load: {str(e)}"],
-                'seo_plugin': None
+                'issues_detail': [f"Failed to load: {str(e)}"]
             }
 
         results.append({
@@ -539,7 +498,6 @@ def main():
             'Missing Alt Image URLs': '; '.join(report['missing_alt_images']),
             'Breadcrumb Schema': 'Yes' if report['has_breadcrumb_schema'] else 'No',
             'Breadcrumb HTML': 'Yes' if report['has_breadcrumb_html'] else 'No',
-            'SEO Plugin': report['seo_plugin'] or 'Unknown',
             'Issues Summary': '; '.join(report['issues']) if report['issues'] else 'OK',
             'Issues Detail': ' | '.join(report['issues_detail'])
         })
@@ -555,7 +513,7 @@ def main():
     except Exception as e:
         print(f"❌ Failed to save CSV: {e}")
 
-    # Generate HTML
+    # Generate HTML report
     html_file = generate_html_report(results, BASE_URL)
     print(f"\n🎨 HTML report generated: {html_file}")
 
