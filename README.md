@@ -45,12 +45,12 @@ The report includes interactive features such as filtering, expandable rows, and
 ## Installation
 1. Clone the repository:
 git clone https://github.com/yourusername/wordpress-seo-analyzer.git
-cd wordpress-seo-analyzer
+cd SEO_analyzer
 
 2. Install required dependencies:
 pip3 install requests beautifulsoup4
 2. Run the script and enter your site's URL when prompted:
-python3 seo_audit.py
+python3 seo.py
 
 The script will:
 
