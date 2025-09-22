@@ -60,8 +60,8 @@ The script will:
 - Discover all published posts and pages via the WordPress REST API
 - Fetch and analyze each page
 - Generate two output files:
-seo_report_plovdivwalks.com.html – Interactive HTML report
-seo_report_plovdivwalks.com.csv – Structured CSV export
+seo_report_yourdomain.html – Interactive HTML report
+seo_report_yourdomain.csv – Structured CSV export
 The HTML report opens automatically in your default browser after generation.
 
 
